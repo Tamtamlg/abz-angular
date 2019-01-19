@@ -1,0 +1,68 @@
+<div class="registration">
+  <div class="container registration__headings-wrap">
+    <div class="row">
+      <div class="col">
+        <h2 class="registration__heading">Register to get a work</h2>
+        <h5 class="registration__subheading">Attention! After successful registration and alert, update the list of users in the block from the top</h5>
+      </div>
+    </div>
+  </div>
+  <form class="container registration__form">
+    <div class="row registration__row">
+      <div class="col-md-4 ">
+        <div class="form-group">
+          <label for="exampleInputEmail1" class="registration__lbl">Name</label>
+          <input type="text" class="form-control registration__control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your name">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="exampleInputEmail2" class="registration__lbl">Email</label>
+          <input type="email" class="form-control registration__control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Your email">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="exampleInputEmail3" class="registration__lbl">Phone</label>
+          <input type="tel" class="form-control registration__control" id="exampleInputEmail3" aria-describedby="emailHelp" placeholder="+38 (___)  ___ __ __">
+        </div>
+      </div>
+    </div>
+    <div class="row registration__row">
+      <div class="col-md-6">
+        <div class="form-group registration__select">
+          <input type="text" class="form-control registration__control" id="exampleInputEmail4" aria-describedby="emailHelp" placeholder="Select your position">
+          <ul class="registration__dropdown registration-dropdown d-none">
+            <li class="registration-dropdown__item registration-dropdown__item--selected">Selected item</li>
+            <li class="registration-dropdown__item">Second item</li>
+            <li class="registration-dropdown__item">Thurd item</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <div class="input-group">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+              <label class="custom-file-label registration__control" for="inputGroupFile04">
+                <span>Upload your photo</span>
+                <div class="custom-file-label__btn" role="button">
+                  <span class="d-none d-md-inline-block">Browse</span>
+                  <svg class="svg d-block d-md-none" width="20px" height="24px">
+                    <use xlink:href="../assets/img/sprite.svg#upload"></use>
+                  </svg>
+                </div>
+              </label>
+            </div>
+          </div>
+          <small class="registration__hint">File format jpg  up to 5 MB, the minimum size of 70x70px</small>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col d-flex">
+        <button type="submit" class="btn btn--primary registration__btn m-auto" disabled>Sign Up</button>
+      </div>
+    </div>
+  </form>
+</div>

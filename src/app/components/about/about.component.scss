@@ -1,0 +1,32 @@
+$font1: 'Overpass', sans-serif;
+$font2: 'Source Sans Pro', sans-serif;
+.about {
+  margin-bottom: 45px;
+  @media (min-width: 992px) {
+    margin-bottom: 143px;
+  }
+  @media (min-width: 768px) {
+    margin-bottom: 77px;
+  }
+}
+
+.about__heading {
+  color: #000;
+  font-family: $font1;
+  font-size: 26px;
+  font-weight: 400;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto 30px;
+  @media (min-width: 1025px) {
+    width: 55%;
+  }
+  @media (min-width: 992px) {
+    width: 60%;
+  }
+  @media (min-width: 768px) {
+    font-size: 42px;
+    width: 85%;
+    margin: 0 auto 45px;
+  }
+}

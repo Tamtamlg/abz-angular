@@ -1,0 +1,32 @@
+<div class="users" id="users">
+  <div class="container users__headings-wrap">
+    <div class="row">
+      <div class="col">
+        <h2 class="users__heading">Our cheerful users</h2>
+        <h5 class="users__subheading">Attention! Sorting users by registration date</h5>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <app-user-card></app-user-card>
+      </div>
+      <div class="col-md-4">
+        <app-user-card></app-user-card>
+      </div>
+      <div class="col-md-4">
+        <app-user-card></app-user-card>
+      </div>
+    </div>
+  </div>
+  <!-- <AppLoader v-if="loading" /> -->
+  <div class="container users__btn-container">
+    <div class="row">
+      <div class="col d-flex">
+        <button 
+          class="btn btn--primary btn--invers m-auto users__btn">Show more</button>
+      </div>
+    </div>
+  </div>
+</div>

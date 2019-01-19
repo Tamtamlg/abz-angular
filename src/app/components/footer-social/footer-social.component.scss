@@ -1,0 +1,29 @@
+$font1: 'Overpass', sans-serif;
+$font2: 'Source Sans Pro', sans-serif;
+.footer-social {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  @media (max-width: 767px) {
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+}
+
+.footer-social__item:not(:last-child) {
+  margin-right: 20px;
+}
+
+.footer-social__link {
+  .svg {
+    fill: #fff;
+  }
+  &:hover {
+    .svg {
+      fill: #ef6c00;
+    }
+  }
+}

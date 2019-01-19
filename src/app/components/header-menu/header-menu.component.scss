@@ -1,0 +1,26 @@
+$font1: 'Overpass', sans-serif;
+$font2: 'Source Sans Pro', sans-serif;
+
+.header-menu__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center; 
+}
+
+.header-menu__item:not(:last-child) {
+  margin-right: 30px;
+}
+
+.header-menu__link {
+  color: #000000;
+  font-family: $font2;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+    color: #ef6c00;
+  }
+}
