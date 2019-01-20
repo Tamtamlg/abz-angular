@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FetchService } from 'src/app/services/fetch.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  userSub: Subscription;
+  user = [];
 
-  ngOnInit() {
+  constructor(
+    private fetchService: FetchService
+  ) { }
+
+  getActiveUser() {
+    this.userSub = this.fetchService.getActiveUser().subscribe((response) => {
+      this.user = response.user;
+    });
   }
 
+  ngOnInit() {
+    // this.getActiveUser();
+  }
+
+  ngOnDestroy() {
+    if (this.userSub) {
+      this.userSub.unsubscribe();
+    }
+  }
 }

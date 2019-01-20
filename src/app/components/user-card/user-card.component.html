@@ -1,12 +1,12 @@
 <div class="user-card">
   <div class="user-card__img">
     <!-- <img :src="img" :alt="name"> -->
-    <img src="../assets/img/user-superstar-2x.jpg" alt="name">
+    <img src="{{userPhoto}}" alt="{{userName}}">
   </div>
   <div class="user-card__info">
-    <h4 class="user-card__heading">name</h4>
-    <p class="mb-0 user-card__position">position</p>
-    <p class="mb-0 user-card__email text-truncate">email</p>
-    <p class="mb-0 user-card__phone">phone</p>
+    <h4 class="user-card__heading">{{userName}}</h4>
+    <p class="mb-0 user-card__position">{{userPosition}}</p>
+    <p class="mb-0 user-card__email text-truncate">{{userEmail}}</p>
+    <p class="mb-0 user-card__phone">{{userPhone}}</p>
   </div>
 </div>

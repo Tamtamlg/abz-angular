@@ -9,14 +9,14 @@
   </div>
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
-        <app-user-card></app-user-card>
-      </div>
-      <div class="col-md-4">
-        <app-user-card></app-user-card>
-      </div>
-      <div class="col-md-4">
-        <app-user-card></app-user-card>
+      <div class="col-md-4" *ngFor="let item of users">
+        <app-user-card 
+          [userName]=item.name
+          [userPhoto]=item.photo
+          [userPosition]=item.position
+          [userEmail]=item.email
+          [userPhone]=item.phone
+        ></app-user-card>
       </div>
     </div>
   </div>
@@ -25,7 +25,10 @@
     <div class="row">
       <div class="col d-flex">
         <button 
-          class="btn btn--primary btn--invers m-auto users__btn">Show more</button>
+          class="btn btn--primary btn--invers m-auto users__btn"
+          (click)="getUsers()"
+          *ngIf="isBtnShow"
+        >Show more</button>
       </div>
     </div>
   </div>

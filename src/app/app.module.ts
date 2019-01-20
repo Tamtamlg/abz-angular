@@ -1,5 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FetchService } from './services/fetch.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 import { AppComponent } from './app.component';
 import { AboutComponent } from './components/about/about.component';
@@ -18,6 +23,7 @@ import { RequirementsComponent } from './components/requirements/requirements.co
 import { UserBlockComponent } from './components/user-block/user-block.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { UsersComponent } from './components/users/users.component';
+import { TokenInterceptor } from './helpers/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -40,9 +46,18 @@ import { UsersComponent } from './components/users/users.component';
     UsersComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    ScrollToModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
