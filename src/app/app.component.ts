@@ -20,7 +20,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit () {
 
     /**
-     * получим токен
+     * Т.к. авторизации нет, а токен нужен, получим его
      */
     this.authSub = this.authService.login().subscribe((response) => {},
     (error) => {});

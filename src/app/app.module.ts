@@ -1,9 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FetchService } from './services/fetch.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 import { AppComponent } from './app.component';
@@ -49,6 +47,7 @@ import { TokenInterceptor } from './helpers/token.interceptor';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     ScrollToModule.forRoot()
   ],
   providers: [

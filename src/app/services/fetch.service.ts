@@ -18,13 +18,19 @@ export class FetchService {
 
   getActiveUser(): Observable<any> {
     return this.http.get(`${this.api}/users/1`, {
-      headers: this.headers
+      // headers: this.headers
     });
   }
 
   getUsers(): Observable<any> {
     return this.http.get(`${this.api}/users?page=${this.page}&count=${this.count}`, {
       headers: this.headers
+    });
+  }
+
+  getPositions(): Observable<any> {
+    return this.http.get(`${this.api}/positions`, {
+      // headers: this.headers
     });
   }
 }

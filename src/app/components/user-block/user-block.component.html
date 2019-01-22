@@ -1,10 +1,10 @@
-<div class="user-block">
+<div class="user-block" *ngIf="user">
   <div class="user-block__info">
-    <div class="user-block__name">Superstar</div>
-    <div class="user-block__email">Superstar@gmail.com</div>
+    <div class="user-block__name">{{user.name}}</div>
+    <div class="user-block__email">{{user.email}}</div>
   </div>
   <a href="#" class="user-block__img">
-    <img src="../assets/img/user-superstar-2x.jpg" alt="">
+    <img src="{{user.photo}}" alt="{{user.name}}">
   </a>
   <a href="#" class="user-block__btn d-none d-lg-inline-block">
     <svg class="svg" width="24px" height="20px">

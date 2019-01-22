@@ -1,5 +1,5 @@
 <!-- <header class="header mobile-menu" :class="{'shown': showMenu}"> -->
-<header class="header mobile-menu">
+<header class="header mobile-menu" [ngClass]="{'shown': showMenu}">
   <div class="container">
     <div class="row">
       <div class="col header__col">
@@ -8,7 +8,7 @@
             <use xlink:href="../assets/img/sprite.svg#logo"></use>
           </svg>
         </a>
-        <app-header-menu></app-header-menu>
+        <app-header-menu role="navigation" class="header-menu"></app-header-menu>
         <app-user-block></app-user-block>
       </div>
     </div>

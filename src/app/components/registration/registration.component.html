@@ -7,35 +7,63 @@
       </div>
     </div>
   </div>
-  <form class="container registration__form">
+  <form class="container registration__form" name="registrationForm" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
     <div class="row registration__row">
       <div class="col-md-4 ">
         <div class="form-group">
-          <label for="exampleInputEmail1" class="registration__lbl">Name</label>
-          <input type="text" class="form-control registration__control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your name">
+          <label for="inputName" class="registration__lbl">Name</label>
+          <input
+            type="text"
+            class="form-control registration__control"
+            id="inputName"
+            placeholder="Your name"
+            [formControlName]="'inputName'"
+          >
         </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
-          <label for="exampleInputEmail2" class="registration__lbl">Email</label>
-          <input type="email" class="form-control registration__control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Your email">
+          <label for="inputEmail" class="registration__lbl">Email</label>
+          <input 
+            type="email" 
+            class="form-control registration__control" 
+            id="inputEmail" 
+            placeholder="Your email"
+            [formControlName]="'inputEmail'"
+          >
         </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
-          <label for="exampleInputEmail3" class="registration__lbl">Phone</label>
-          <input type="tel" class="form-control registration__control" id="exampleInputEmail3" aria-describedby="emailHelp" placeholder="+38 (___)  ___ __ __">
+          <label for="inputPhone" class="registration__lbl">Phone</label>
+          <input 
+            type="tel" 
+            class="form-control registration__control" 
+            id="inputPhone" 
+            placeholder="+38 (___)  ___ __ __"
+            [formControlName]="'inputPhone'"
+          >
         </div>
       </div>
     </div>
     <div class="row registration__row">
       <div class="col-md-6">
-        <div class="form-group registration__select">
-          <input type="text" class="form-control registration__control" id="exampleInputEmail4" aria-describedby="emailHelp" placeholder="Select your position">
-          <ul class="registration__dropdown registration-dropdown d-none">
-            <li class="registration-dropdown__item registration-dropdown__item--selected">Selected item</li>
-            <li class="registration-dropdown__item">Second item</li>
-            <li class="registration-dropdown__item">Thurd item</li>
+        <div class="form-group registration__select" (click)="toggleSelect()">
+          <input 
+            type="text" 
+            class="form-control registration__control" 
+            readonly 
+            id="inputPosition" 
+            placeholder="Select your position" 
+            [formControlName]="'inputPosition'"
+          >
+          <ul class="registration__dropdown registration-dropdown" *ngIf="openSelect">
+            <li 
+              class="registration-dropdown__item registration-dropdown__item--selected"
+              *ngFor="let position of positions"
+              [ngClass]="{'registration-dropdown__item--selected': selectedPosition.toLowerCase() === position.name.toLowerCase()}"
+              (click)="changeSelectedPosition(position.name, position.id)"
+            >{{position.name}}</li>
           </ul>
         </div>
       </div>
@@ -43,8 +71,13 @@
         <div class="form-group">
           <div class="input-group">
             <div class="custom-file">
-              <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
-              <label class="custom-file-label registration__control" for="inputGroupFile04">
+              <input 
+                type="file" 
+                class="custom-file-input" 
+                id="inputFile"
+                [formControlName]="'inputFile'"
+              >
+              <label class="custom-file-label registration__control" for="inputFile">
                 <span>Upload your photo</span>
                 <div class="custom-file-label__btn" role="button">
                   <span class="d-none d-md-inline-block">Browse</span>
@@ -61,7 +94,7 @@
     </div>
     <div class="row">
       <div class="col d-flex">
-        <button type="submit" class="btn btn--primary registration__btn m-auto" disabled>Sign Up</button>
+        <button type="submit" class="btn btn--primary registration__btn m-auto" >Sign Up</button> <!-- disabled -->
       </div>
     </div>
   </form>

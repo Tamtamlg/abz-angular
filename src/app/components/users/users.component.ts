@@ -23,7 +23,7 @@ export class UsersComponent implements OnInit, OnDestroy {
     this.usersSub = this.fetchService.getUsers().subscribe((response) => {
       this.users = [...this.users, ...response.users];
       this.totalPages = response.total_pages;
-      this.fetchService.page +=1;
+      this.fetchService.page += 1;
       if (this.fetchService.page > this.totalPages) {
         this.isBtnShow = false;
       }
@@ -31,7 +31,7 @@ export class UsersComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.getUsers()
+    this.getUsers();
   }
 
   ngOnDestroy() {
