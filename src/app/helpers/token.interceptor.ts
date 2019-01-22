@@ -15,6 +15,7 @@ export class TokenInterceptor  implements HttpInterceptor {
     if (this.authService.getToken()) {
       request = request.clone({
         setHeaders: {
+          // 'Content-Type': 'multipart/form-data',
           Token: this.authService.getToken()
         }
       });

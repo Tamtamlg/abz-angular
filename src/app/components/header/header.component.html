@@ -1,4 +1,3 @@
-<!-- <header class="header mobile-menu" :class="{'shown': showMenu}"> -->
 <header class="header mobile-menu" [ngClass]="{'shown': showMenu}">
   <div class="container">
     <div class="row">
@@ -9,7 +8,7 @@
           </svg>
         </a>
         <app-header-menu role="navigation" class="header-menu"></app-header-menu>
-        <app-user-block></app-user-block>
+        <app-user-block class="user-block"></app-user-block>
       </div>
     </div>
   </div>

@@ -33,4 +33,10 @@ export class FetchService {
       // headers: this.headers
     });
   }
+
+  sendData(data): Observable<any> {
+    return this.http.post(`${this.api}/users`, data {
+      headers: this.headers
+    });
+  }
 }

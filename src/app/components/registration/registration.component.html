@@ -76,6 +76,7 @@
                 class="custom-file-input" 
                 id="inputFile"
                 [formControlName]="'inputFile'"
+                (change)="handleFileInput($event.target.files)"
               >
               <label class="custom-file-label registration__control" for="inputFile">
                 <span>Upload your photo</span>
@@ -94,7 +95,7 @@
     </div>
     <div class="row">
       <div class="col d-flex">
-        <button type="submit" class="btn btn--primary registration__btn m-auto" >Sign Up</button> <!-- disabled -->
+        <button type="submit" class="btn btn--primary registration__btn m-auto" [disabled]="!registrationForm.valid">Sign Up</button>
       </div>
     </div>
   </form>

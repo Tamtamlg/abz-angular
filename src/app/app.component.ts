@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { Subscription } from 'rxjs';
+import { MenuService } from './services/menu.service';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +13,25 @@ export class AppComponent implements OnInit, OnDestroy {
 
   title = 'abz-angular';
   authSub: Subscription;
+  showMenu: Boolean;
+  showMenuSub: Subscription;
 
   constructor (
-    private authService: AuthService
-  ) { }
+    private authService: AuthService,
+    private menuService: MenuService
+  ) {
+    this.showMenuSub = this.menuService.showMenu.subscribe(data => {
+      this.showMenu = data;
+    });
+  }
+
+  toggleMenu() {
+    if (!this.showMenu) {
+      this.menuService.showMenu.next(true);
+    } else {
+      this.menuService.showMenu.next(false);
+    }
+  }
 
   ngOnInit () {
 
@@ -30,6 +46,9 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.authSub) {
       this.authSub.unsubscribe();
+    }
+    if (this.showMenuSub) {
+      this.showMenuSub.unsubscribe();
     }
   }
 }

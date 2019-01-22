@@ -2,9 +2,8 @@
 
   <app-header-mob></app-header-mob>
   <app-header></app-header>
-  <!-- 
-    <div class="overlay" v-if="showMenu" @click="hideMenu"></div>
-   -->
+
+  <div class="overlay" *ngIf="showMenu" (click)="toggleMenu()"></div>
 
   <!-- content -->
   <div class="content">

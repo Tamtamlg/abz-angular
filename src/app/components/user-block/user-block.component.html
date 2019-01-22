@@ -1,4 +1,4 @@
-<div class="user-block" *ngIf="user">
+<ng-container *ngIf="user">
   <div class="user-block__info">
     <div class="user-block__name">{{user.name}}</div>
     <div class="user-block__email">{{user.email}}</div>
@@ -11,4 +11,4 @@
       <use xlink:href="../assets/img/sprite.svg#sign-out"></use>
     </svg>
   </a>
-</div>
+</ng-container>

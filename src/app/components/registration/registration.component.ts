@@ -16,6 +16,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   selectedPosition = '';
   positionId = '';
   registrationForm: FormGroup;
+  fileToUpload: File = null;
 
   constructor(
     private fetchService: FetchService
@@ -37,29 +38,52 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     this.openSelect = !this.openSelect;
   }
 
+  handleFileInput(files: FileList) {
+    this.fileToUpload = files.item(0);
+  }
+
   onSubmit() {
     console.log('registrationForm', this.registrationForm);
-    // const formData = this.registrationForm.controls;
-    // const otherValue = formData.other.value ? formData.other.value : 'Other';
+    const controls = this.registrationForm.controls;
     // const contact = {
-    //   description: formData.description.value,
-    //   email: formData.userEmail.value,
-    //   enquiry_type: this.other ? otherValue : formData.enquiryType.value.name,
-    //   file: formData.fileImg.value,
-    //   subject: formData.subject.value,
-    //   user_name: formData.userName.value
+    //   name: formData.inputName.value,
+    //   email: formData.inputEmail.value,
+    //   phone: formData.inputPhone.value.split(' ').join('').replace('(', '').replace(')', ''),
+    //   position_id: 1,
+    //   // position_id: formData.inputPosition.value,
+    //   photo: formData.inputFile.value
     // };
+    const formData = new FormData();
+      formData.append('name', controls.inputName.value);
+      formData.append('email', controls.inputEmail.value);
+      formData.append('phone', controls.inputPhone.value.split(' ').join('').replace('(', '').replace(')', ''));
+      formData.append('position_id', 1);
+      formData.append('photo', this.fileToUpload);
+    this.registrationForm.disable();
+    this.fetchService.sendData(formData).subscribe(response => {
+      if (response.success) {
+        // this.showMsg(response.data.message);
+        console.log('success')
+      } else {
+        // this.showMsg(response.success);
+        console.log('error')
+      }
+    },
+    (error) => {
+      // this.showMsg(error.error.error.description);
+      console.log(error)
+    });
   }
 
   ngOnInit() {
     this.getPositions();
 
     this.registrationForm = new FormGroup({
-      'inputName': new FormControl,
-      'inputEmail': new FormControl,
-      'inputPhone': new FormControl,
-      'inputPosition': new FormControl,
-      'inputFile': new FormControl
+      'inputName': new FormControl(null, [Validators.required]),
+      'inputEmail': new FormControl(null, [Validators.required, Validators.email]),
+      'inputPhone': new FormControl(null, [Validators.required]),
+      'inputPosition': new FormControl(null, [Validators.required]),
+      'inputFile': new FormControl(null, [Validators.required])
     });
   }
 
