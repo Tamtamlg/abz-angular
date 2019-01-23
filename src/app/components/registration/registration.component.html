@@ -18,7 +18,11 @@
             id="inputName"
             placeholder="Your name"
             [formControlName]="'inputName'"
+            [ngClass]="{'is-invalid': registrationForm.get('inputName').invalid && registrationForm.get('inputName').touched}"
           >
+          <span class="invalid-feedback" *ngIf="registrationForm.get('inputName').invalid && registrationForm.get('inputName').touched">
+            This field is required. Min 2, max 60 characters.
+          </span>
         </div>
       </div>
       <div class="col-md-4">
@@ -30,7 +34,11 @@
             id="inputEmail" 
             placeholder="Your email"
             [formControlName]="'inputEmail'"
+            [ngClass]="{'is-invalid': registrationForm.get('inputEmail').invalid && registrationForm.get('inputEmail').touched}"
           >
+          <span class="invalid-feedback" *ngIf="registrationForm.get('inputEmail').invalid && registrationForm.get('inputEmail').touched">
+            Invalid email.
+          </span>
         </div>
       </div>
       <div class="col-md-4">
@@ -42,7 +50,13 @@
             id="inputPhone" 
             placeholder="+38 (___)  ___ __ __"
             [formControlName]="'inputPhone'"
+            prefix="+38 (0" 
+            mask="00) 000 00 00" 
+            [ngClass]="{'is-invalid': registrationForm.get('inputPhone').invalid && registrationForm.get('inputPhone').touched}"
           >
+          <span class="invalid-feedback" *ngIf="registrationForm.get('inputPhone').invalid && registrationForm.get('inputPhone').touched">
+            Invalid phone number.
+          </span>
         </div>
       </div>
     </div>
@@ -56,7 +70,11 @@
             id="inputPosition" 
             placeholder="Select your position" 
             [formControlName]="'inputPosition'"
+            [ngClass]="{'is-invalid': registrationForm.get('inputPosition').invalid && registrationForm.get('inputPosition').touched}"
           >
+          <span class="invalid-feedback" *ngIf="registrationForm.get('inputPosition').invalid && registrationForm.get('inputPosition').touched">
+            This field is required.
+          </span>
           <ul class="registration__dropdown registration-dropdown" *ngIf="openSelect">
             <li 
               class="registration-dropdown__item registration-dropdown__item--selected"
@@ -73,10 +91,12 @@
             <div class="custom-file">
               <input 
                 type="file" 
+                accept="image/jpg,jpeg"
                 class="custom-file-input" 
                 id="inputFile"
                 [formControlName]="'inputFile'"
                 (change)="handleFileInput($event.target.files)"
+                [ngClass]="{'is-invalid': registrationForm.get('inputFile').invalid && registrationForm.get('inputFile').touched}"
               >
               <label class="custom-file-label registration__control" for="inputFile">
                 <span>Upload your photo</span>
@@ -89,7 +109,7 @@
               </label>
             </div>
           </div>
-          <small class="registration__hint">File format jpg  up to 5 MB, the minimum size of 70x70px</small>
+          <small class="registration__hint" [ngClass]="{'invalid': registrationForm.get('inputFile').invalid && registrationForm.get('inputFile').touched}">File format jpg  up to 5 MB, the minimum size of 70x70px</small>
         </div>
       </div>
     </div>

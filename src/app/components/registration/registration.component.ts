@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { FetchService } from 'src/app/services/fetch.service';
+import { RegistrationService } from 'src/app/services/registration.service';
 
 @Component({
   selector: 'app-registration',
@@ -19,7 +20,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   fileToUpload: File = null;
 
   constructor(
-    private fetchService: FetchService
+    private fetchService: FetchService,
+    private registrationService: RegistrationService
   ) { }
 
   getPositions() {
@@ -43,35 +45,29 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    console.log('registrationForm', this.registrationForm);
     const controls = this.registrationForm.controls;
-    // const contact = {
-    //   name: formData.inputName.value,
-    //   email: formData.inputEmail.value,
-    //   phone: formData.inputPhone.value.split(' ').join('').replace('(', '').replace(')', ''),
-    //   position_id: 1,
-    //   // position_id: formData.inputPosition.value,
-    //   photo: formData.inputFile.value
-    // };
     const formData = new FormData();
       formData.append('name', controls.inputName.value);
       formData.append('email', controls.inputEmail.value);
-      formData.append('phone', controls.inputPhone.value.split(' ').join('').replace('(', '').replace(')', ''));
-      formData.append('position_id', 1);
-      formData.append('photo', this.fileToUpload);
+      formData.append('phone', '+380' + controls.inputPhone.value.split(' ').join('').replace('(', '').replace(')', ''));
+      formData.append('position_id', this.positionId);
+      formData.append('photo', this.fileToUpload, this.fileToUpload.name);
     this.registrationForm.disable();
     this.fetchService.sendData(formData).subscribe(response => {
       if (response.success) {
         // this.showMsg(response.data.message);
-        console.log('success')
+        console.log('success');
+        this.registrationService.newEvent('updateUsers');
       } else {
         // this.showMsg(response.success);
-        console.log('error')
+        console.log('error');
       }
+      this.registrationForm.enable();
     },
     (error) => {
       // this.showMsg(error.error.error.description);
-      console.log(error)
+      console.log(error);
+      this.registrationForm.enable();
     });
   }
 
@@ -79,9 +75,9 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     this.getPositions();
 
     this.registrationForm = new FormGroup({
-      'inputName': new FormControl(null, [Validators.required]),
+      'inputName': new FormControl(null, [Validators.required, Validators.maxLength(60), Validators.minLength(2)]),
       'inputEmail': new FormControl(null, [Validators.required, Validators.email]),
-      'inputPhone': new FormControl(null, [Validators.required]),
+      'inputPhone': new FormControl(null, [Validators.required, Validators.minLength(9)]),
       'inputPosition': new FormControl(null, [Validators.required]),
       'inputFile': new FormControl(null, [Validators.required])
     });

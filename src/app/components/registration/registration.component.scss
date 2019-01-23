@@ -164,6 +164,9 @@ $font2: 'Source Sans Pro', sans-serif;
   padding-left: 15px;
   position: absolute;
   top: 100%;
+  &.invalid {
+    color: #dc3545;
+  }
 }
 
 .registration__upload {
