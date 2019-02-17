@@ -409,3 +409,12 @@ h5 {
   position: absolute;
   padding-left: 15px;
 }
+
+/* webp support */
+.webp .jumbotron.lazy-bg--loaded {
+  background-image: url('assets/img/bg-1.webp') !important;
+}
+.webp .requirements.lazy-bg--loaded {
+  background-image: url('assets/img/bg-2.webp') !important;
+}
+/* /webp support */

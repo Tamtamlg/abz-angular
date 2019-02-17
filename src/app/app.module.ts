@@ -4,6 +4,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { NgxMaskModule } from 'ngx-mask';
+import { InlineSVGModule } from 'ng-inline-svg';
 
 import { AppComponent } from './app.component';
 import { AboutComponent } from './components/about/about.component';
@@ -23,6 +24,7 @@ import { UserBlockComponent } from './components/user-block/user-block.component
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { UsersComponent } from './components/users/users.component';
 import { TokenInterceptor } from './helpers/token.interceptor';
+import { IconComponent } from './components/icon/icon.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { TokenInterceptor } from './helpers/token.interceptor';
     RequirementsComponent,
     UserBlockComponent,
     UserCardComponent,
-    UsersComponent
+    UsersComponent,
+    IconComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ import { TokenInterceptor } from './helpers/token.interceptor';
     FormsModule,
     ReactiveFormsModule,
     ScrollToModule.forRoot(),
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    InlineSVGModule.forRoot()
   ],
   providers: [
     {

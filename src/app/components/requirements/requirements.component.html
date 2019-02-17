@@ -1,4 +1,4 @@
-<div class="requirements" id="requirements">
+<div class="requirements lazy-bg" id="requirements">
   <div class="container">
     <div class="row">
       <div class="col">
@@ -17,8 +17,12 @@
       </div>
       <div class="col-md-6">
         <div class="requirements__img">
-          <img src="../assets/img/man-laptop-v1.svg" alt="" class="d-block d-md-none d-lg-block">
-          <img src="../assets/img/man-laptop-v2.svg" alt="" class="d-none d-md-block d-lg-none">
+          <picture>
+            <source class="lazy" data-srcset="assets/img/man-laptop-v1.svg" media="(min-width: 992px)">
+            <source class="lazy" data-srcset="assets/img/man-laptop-v2.svg" media="(min-width: 767px) and (max-width: 991px)">
+            <source class="lazy" data-srcset="assets/img/man-laptop-v1.svg" media="(min-width: 320px) and (max-width: 767px)">
+            <img class="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/man-laptop-v1.svg" data-srcset="assets/img/man-laptop-v1.svg" alt="">
+          </picture>
         </div>
       </div>
     </div>

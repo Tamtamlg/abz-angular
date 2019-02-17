@@ -16,7 +16,7 @@ export class AppComponent implements OnInit, OnDestroy {
   showMenu: Boolean;
   showMenuSub: Subscription;
 
-  constructor (
+  constructor(
     private authService: AuthService,
     private menuService: MenuService
   ) {
@@ -33,13 +33,13 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnInit () {
+  ngOnInit() {
 
     /**
      * Т.к. авторизации нет, а токен нужен, получим его
      */
-    this.authSub = this.authService.login().subscribe((response) => {},
-    (error) => {});
+    this.authSub = this.authService.login().subscribe((response) => { },
+      (error) => { });
 
   }
 

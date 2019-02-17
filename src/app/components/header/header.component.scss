@@ -133,3 +133,7 @@ $font2: 'Source Sans Pro', sans-serif;
     }
   }
 }
+
+.header ::ng-deep svg.svg-logo use {
+  fill: #000;
+}
